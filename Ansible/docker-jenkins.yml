@@ -1,0 +1,82 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    docker_compose_version: "1.29.2"
+  tasks:
+
+    - name: Update apt cache
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Upgrade all apt packages
+      apt: upgrade=dist
+
+    - name: Install dependencies
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - gnupg-agent
+        - python3-pip  
+      
+    - name: Add an apt signing key for Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+        - docker.io
+
+    - name: Download docker-compose {{ docker_compose_version }}
+      get_url:
+        url : https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
+        dest: ~/docker-compose
+        mode: '+x'
+    
+    - name: Check docker-compose exists
+      stat: path=~/docker-compose
+      register: docker_compose
+
+    - name: Move docker-compose to /usr/local/bin/docker-compose
+      command: mv ~/docker-compose /usr/local/bin/docker-compose
+      when: docker_compose.stat.exists
+    
+    - name: Add user to docker group
+      command: "usermod -aG docker ubuntu"
+      command: "newgrp docker"
+    
+    - name: Install docker-py
+      command: "pip install docker-py"
+    
+ #   - name: Create Jenkins container
+ #     docker_container:
+ #       name: jenkins
+ #       image: jenkins/jenkins:lts
+ #       ports:
+ #         - "8080:8080"
+ #         - "50000:50000"
+ #       restart_policy: always
+ #       volumes:
+ #         - jenkins-home:/var/jenkins_home
+ #   
+ #   - name: get jenkins password
+ #     command: "docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword"
+ #     register: jenkinsCode
+ #     ignore_errors: yes
+ #
+ #   - name: Show jenkins password
+ #     ignore_errors: yes
+ #     debug:  
+ #       msg: "Jenkins code is {{ jenkinsCode.stdout }}"  

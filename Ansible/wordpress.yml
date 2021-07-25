@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    docker_compose_version: "1.29.2"
+  tasks:
+    - name: copy Docker Compose files
+      copy:
+         src: /var/lib/jenkins/workspace/Wordpress/Wordpress/docker-compose.yml
+         dest: /
+    - name: deploy Docker Compose stack
+      command: 'docker-compose up -d'
+#      docker_compose:
+#          project_src: ~/docker-compose.yml
+#          files:
+#          - docker-compose.yml
+      
