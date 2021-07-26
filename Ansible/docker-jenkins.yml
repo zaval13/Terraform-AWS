@@ -77,6 +77,14 @@
            - "2023-2024:2023-2024"
            - "8125:8125/udp"
            - "8126:8126"
+
+    - name: Copy collecd.conf
+      copy:
+         src: /var/lib/jenkins/workspace/Ansible AWS/Ansible/collectd.conf
+         dest: /etc/collectd/
+         owner: root
+         group: root
+         mode: '644'       
     
  #   - name: Create Jenkins container
  #     docker_container:
