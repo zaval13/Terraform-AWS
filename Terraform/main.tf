@@ -57,7 +57,27 @@ resource "aws_security_group" "my_webserver1" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
   
-
+  ingress {
+    from_port        = 8125
+    to_port          = 8126
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  
+  ingress {
+    from_port        = 2023
+    to_port          = 2024
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  
+  ingress {
+    from_port        = 2003
+    to_port          = 2004
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  
   egress {
     from_port        = 0
     to_port          = 0
