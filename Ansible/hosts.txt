@@ -1,5 +1,5 @@
 [aws_webserver]
-webserver1 ansible_host=18.224.189.245
+webserver1 ansible_host=18.116.161.238
 [aws_webserver:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ubuntu
