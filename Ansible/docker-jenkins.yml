@@ -80,6 +80,12 @@
            - "8125:8125/udp"
            - "8126:8126"
 
+    - name: Install Collectd
+      apt:
+        name: "collectd"
+        state: present
+             
+
     - name: Copy collecd.conf
       copy:
          src: /var/lib/jenkins/workspace/Ansible AWS/Ansible/collectd.conf
