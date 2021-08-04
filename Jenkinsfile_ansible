@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Git Checkout') {
           steps {
-              git credentialsId: '5d51a221-75dc-47f8-a296-89af31ae45e3', url: 'https://github.com/zaval13/Terraform-AWS'
+              git credentialsId: '2d6bc20a-2088-4b87-ae94-ae51d3934d10', url: 'https://github.com/zaval13/Terraform-AWS'
           }
        }
         stage('Run Ansible playbook') {
