@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage ('Git Checkout') {
           steps {
-              git credentialsId: '5d51a221-75dc-47f8-a296-89af31ae45e3', url: 'https://github.com/zaval13/Terraform-AWS'
+              git credentialsId: '2d6bc20a-2088-4b87-ae94-ae51d3934d10', url: 'https://github.com/zaval13/Terraform-AWS'
           }
        }
         stage('Install Wordpress & DB') {
             steps {
                 dir('./Ansible') { 
-                  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '50fe9061-584d-4471-88b1-ef1dc1275f4c', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '0b7c251c-8a06-4207-bd66-f2ac525e25e6', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                    sh 'ansible-playbook wordpress.yml'
               }
            }
