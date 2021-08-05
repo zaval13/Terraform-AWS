@@ -6,7 +6,8 @@
   tasks:
     - name: copy Docker Compose files
       copy:
-         src: /var/lib/jenkins/workspace/Wordpress/Wordpress/docker-compose.yml
+         #src: /var/lib/jenkins/workspace/Wordpress/Wordpress/docker-compose.yml
+         src: /var/jenkins_home/workspace/Wordpress/Wordpress/docker-compose.yml
          dest: /
     - name: deploy Docker Compose stack
       command: 'docker-compose down'
