@@ -56,7 +56,7 @@
     - name: Add user to docker group
       command: "groupadd docker"
       command: "usermod -aG docker ubuntu"
-      command: "newgrp docker"
+#      command: "newgrp docker"
     
     - name: Install docker-py
       command: "pip install docker-py"
