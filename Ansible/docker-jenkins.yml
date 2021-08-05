@@ -54,6 +54,7 @@
       when: docker_compose.stat.exists
     
     - name: Add user to docker group
+      command: "groupadd docker"
       command: "usermod -aG docker ubuntu"
       command: "newgrp docker"
     
