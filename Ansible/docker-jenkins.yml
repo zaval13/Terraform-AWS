@@ -92,6 +92,7 @@
 #         src: /var/lib/jenkins/workspace/Ansible AWS/Ansible/collectd.conf
          src: /var/lib/docker/volumes/jenkins_home/_data/workspace/Ansible/Ansible/collectd.conf
          dest: /etc/collectd/
+         remote_src: yes
          force: yes
          owner: root
          group: root
