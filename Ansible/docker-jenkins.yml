@@ -89,7 +89,8 @@
 
     - name: Copy collecd.conf
       copy:
-         src: /var/lib/jenkins/workspace/Ansible AWS/Ansible/collectd.conf
+#         src: /var/lib/jenkins/workspace/Ansible AWS/Ansible/collectd.conf
+         src: /var/lib/docker/volumes/jenkins_home/_data/workspace/Ansible/Ansible
          dest: /etc/collectd/
          owner: root
          group: root
