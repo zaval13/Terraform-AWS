@@ -66,7 +66,8 @@
          name: grafana
          image: grafana/grafana
          ports:
-           - "3000:3000" 
+           - "3000:3000"
+         restart_policy: always  
     
     - name: Create Graphite container
       docker_container:
@@ -80,6 +81,7 @@
            - "2024:2024"
            - "8125:8125/udp"
            - "8126:8126"
+         restart_policy: always  
 
     - name: Install Collectd
       apt:
@@ -94,7 +96,13 @@
          force: yes
          owner: root
          group: root
-         mode: '644'       
+         mode: '644'  
+         
+    - name: Restart Collectd
+      service:
+        name: "collectd"
+        state: restarted
+        enabled: yes
     
  #   - name: Create Jenkins container
  #     docker_container:
