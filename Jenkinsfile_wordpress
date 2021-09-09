@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('Git Checkout') {
           steps {
-              git credentialsId: '2d6bc20a-2088-4b87-ae94-ae51d3934d10', url: 'https://github.com/zaval13/Terraform-AWS'
+              git credentialsId: '630fba4e-fb03-4484-b58e-f37054e7215a', url: 'https://github.com/zaval13/Terraform-AWS'
           }
        }
         stage('Install Wordpress & DB') {
