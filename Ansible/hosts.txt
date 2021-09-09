@@ -3,4 +3,4 @@ webserver1 ansible_host=18.188.117.193
 [aws_webserver:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=ubuntu
-ansible_ssh_private_key_file=/home/val13/awskey.pem
+ansible_ssh_private_key_file=/var/awskey.pem
