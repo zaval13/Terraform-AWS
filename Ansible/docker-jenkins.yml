@@ -66,8 +66,7 @@
          name: grafana
          image: grafana/grafana
          ports:
-           - "3000:3000"
-         restart_policy: always  
+           - "3000:3000" 
     
     - name: Create Graphite container
       docker_container:
@@ -80,8 +79,7 @@
            - "2023:2023"
            - "2024:2024"
            - "8125:8125/udp"
-           - "8126:8126"
-         restart_policy: always  
+           - "8126:8126"  
 
     - name: Install Collectd
       apt:
