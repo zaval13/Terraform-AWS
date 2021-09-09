@@ -10,3 +10,8 @@
 - install Docker, Docker Compose
 - create Grafana & Graphite containers, install Collectd
 - start containers with Woerdpress & DB. (Docker Compose)
+
+#### Ports:
+- 3000 - Grafana
+- 8080 - Graphite
+- 80   - Wordpress
