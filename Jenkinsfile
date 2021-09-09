@@ -12,7 +12,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 dir('./Terraform') { 
-                  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '0b7c251c-8a06-4207-bd66-f2ac525e25e6', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                  withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '22e826b2-22ef-49c7-88b1-89134644be0f', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                    sh 'terraform init'
               }
            }
@@ -21,7 +21,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
               dir('./Terraform') {  
-                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '0b7c251c-8a06-4207-bd66-f2ac525e25e6', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '22e826b2-22ef-49c7-88b1-89134644be0f', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                   sh 'terraform apply --auto-approve'
               }
            }
