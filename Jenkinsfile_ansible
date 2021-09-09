@@ -10,7 +10,7 @@ pipeline {
         stage('Run Ansible playbook') {
             steps {
               dir('./Ansible') {
-                sh 'ansible-playbook docker-jenkins.yml'
+                sh 'ansible-playbook -vvv docker-jenkins.yml'
             }
           }
         }
