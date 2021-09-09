@@ -1,8 +1,5 @@
-## Deploying cotainerized Wordpress site on AWS EC2 instance. 
+## Deploying cotainerized Wordpress site on AWS EC2 instance. Create Grafana and Graphite containers + Collectd
 
-#### Docker: 
-- create image with Jenkins, Terraform, Ansible
-- start container with volume for data persistence
 #### Jenkins: 
 - pull project from Github
 - run jobs for Terraform and Ansible
@@ -12,4 +9,4 @@
 #### Ansible: 
 - install Docker, Docker Compose
 - create Grafana & Graphite containers, install Collectd
-- start containers with Woerdpress & DB.
+- start containers with Woerdpress & DB. (Docker Compose)
